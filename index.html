@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NS-Kontinuitäten in der BRD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #8B0000;
+            --color-secondary: #2c3e50;
+            --color-accent: #c0392b;
+            --color-bg: #f5f5f5;
+            --color-text: #2c3e50;
+            --color-border: #ddd;
+            --color-warning: #e67e22;
+            --color-danger: #e74c3c;
+            --color-success: #27ae60;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            color: white;
+            padding: 50px 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.95;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* INTRO SECTION */
+        .intro-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .intro-section h2 {
+            font-size: 28px;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--color-accent);
+            padding-bottom: 10px;
+        }
+
+        .intro-section p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.9;
+        }
+
+        .intro-section strong {
+            color: var(--color-primary);
+        }
+
+        /* NAVIGATION GRID */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .nav-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 3px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+            border-color: var(--color-primary);
+        }
+
+        .nav-card-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .nav-card h3 {
+            font-size: 22px;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .nav-card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* DETAIL SECTIONS */
+        .detail-section {
+            display: none;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            animation: fadeIn 0.4s ease;
+        }
+
+        .detail-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .detail-section h2 {
+            font-size: 32px;
+            color: var(--color-primary);
+            margin-bottom: 25px;
+            border-bottom: 4px solid var(--color-accent);
+            padding-bottom: 12px;
+        }
+
+        .detail-section h3 {
+            font-size: 22px;
+            color: var(--color-secondary);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 5px solid var(--color-accent);
+        }
+
+        .detail-section h4 {
+            font-size: 18px;
+            color: var(--color-secondary);
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .detail-section p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.9;
+        }
+
+        .detail-section ul {
+            margin: 15px 0 15px 30px;
+            color: #555;
+        }
+
+        .detail-section li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        /* STATS BOX */
+        .stats-box {
+            background: linear-gradient(135deg, #FFF5F5 0%, #FFE5E5 100%);
+            border-left: 5px solid var(--color-danger);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .stats-box strong {
+            color: var(--color-danger);
+            font-size: 18px;
+        }
+
+        .stats-box p {
+            margin: 8px 0;
+            font-size: 15px;
+        }
+
+        /* INFO BOX */
+        .info-box {
+            background: linear-gradient(135deg, #F0F8FF 0%, #E6F3FF 100%);
+            border-left: 5px solid #3498db;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .info-box h4 {
+            color: #2980b9;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        /* WARNING BOX */
+        .warning-box {
+            background: linear-gradient(135deg, #FFFBF0 0%, #FFF3E0 100%);
+            border-left: 5px solid var(--color-warning);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        /* SOURCES */
+        .sources {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border-left: 5px solid var(--color-success);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .sources h4 {
+            font-size: 18px;
+            color: var(--color-success);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .sources p {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .sources a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* BACK BUTTON */
+        .back-btn {
+            background: var(--color-secondary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .back-btn:hover {
+            background: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        /* TIMELINE */
+        .timeline-item {
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 4px solid var(--color-accent);
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        .timeline-item strong {
+            color: var(--color-primary);
+            font-size: 16px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 28px;
+            }
+
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-section {
+                padding: 25px;
+            }
+        }
+
+        /* VISIBILITY CONTROL */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <h1>📋 M27: Ende gut, alles gut?</h1>
+            <p>Kontinuitäten des Nationalsozialismus in der Bundesrepublik Deutschland</p>
+        </header>
+
+        <!-- INTRO SECTION -->
+        <div id="intro-section" class="intro-section">
+            <h2>🔍 Zentrale Frage: Wie viel Nationalsozialismus steckte in der BRD?</h2>
+            <p>Nach dem Ende des Zweiten Weltkriegs und der NS-Diktatur 1945 sollte Deutschland demokratisch neu aufgebaut werden. Die Alliierten starteten die <strong>Entnazifizierung</strong>: NSDAP-Mitglieder und NS-Täter sollten aus wichtigen Positionen entfernt werden. Doch wie gründlich war dieser Neuanfang wirklich?</p>
+            
+            <p>Diese interaktive Lernplattform zeigt, dass der Neuanfang in der Bundesrepublik Deutschland (BRD) <strong>von personellen und ideologischen Kontinuitäten geprägt</strong> war. In vielen Bereichen – von der Justiz über den Geheimdienst bis zur Wirtschaft – setzten ehemalige NS-Täter ihre Karrieren fort. Manche hatten sich aktiv an Verbrechen beteiligt.</p>
+
+            <p><strong>Eure Aufgabe:</strong> Untersucht anhand der folgenden Bereiche, in welchen Institutionen NS-Kontinuitäten bestanden, warum diese möglich waren und welche Folgen das für die junge Demokratie hatte.</p>
+
+            <p style="margin-top: 25px; padding: 20px; background: linear-gradient(135deg, #FFF9E6 0%, #FFEAA7 100%); border-left: 5px solid var(--color-warning); border-radius: 8px;">
+                <strong>💡 Tipp:</strong> Wählt unten einen Bereich aus, um detaillierte Informationen mit Quellenangaben zu erhalten. Ihr könnt jederzeit zur Übersicht zurückkehren.
+            </p>
+        </div>
+
+        <!-- NAVIGATION GRID -->
+        <div id="nav-grid" class="nav-grid">
+            <div class="nav-card" onclick="showDetail('bnd')">
+                <div class="nav-card-icon">🕵️</div>
+                <h3>Bundesnachrichtendienst</h3>
+                <p>NS-Täter im deutschen Geheimdienst</p>
+            </div>
+
+            <div class="nav-card" onclick="showDetail('justiz')">
+                <div class="nav-card-icon">⚖️</div>
+                <h3>Justiz</h3>
+                <p>Richter und Staatsanwälte mit NS-Vergangenheit</p>
+            </div>
+
+            <div class="nav-card" onclick="showDetail('medizin')">
+                <div class="nav-card-icon">💉</div>
+                <h3>Medizin</h3>
+                <p>Ärzte und Ärztinnen: Von KZ zu Chefarzt</p>
+            </div>
+
+            <div class="nav-card" onclick="showDetail('bundeswehr')">
+                <div class="nav-card-icon">⚔️</div>
+                <h3>Bundeswehr</h3>
+                <p>Wehrmacht-Offiziere in der neuen Armee</p>
+            </div>
+
+            <div class="nav-card" onclick="showDetail('auswaertiges')">
+                <div class="nav-card-icon">🌍</div>
+                <h3>Auswärtiges Amt</h3>
+                <p>Diplomaten mit NS-Belastung</p>
+            </div>
+
+            <div class="nav-card" onclick="showDetail('polizei')">
+                <div class="nav-card-icon">👮</div>
+                <h3>Polizei</h3>
+                <p>Von Gestapo zur Kriminalpolizei</p>
+            </div>
+
+            <div class="nav-card" onclick="showDetail('entnazifizierung')">
+                <div class="nav-card-icon">📄</div>
+                <h3>Entnazifizierung</h3>
+                <p>Warum scheiterte die "Säuberung"?</p>
+            </div>
+
+            <div class="nav-card" onclick="showDetail('adenauer')">
+                <div class="nav-card-icon">🎩</div>
+                <h3>Adenauer & Globke</h3>
+                <p>Pragmatismus statt Aufarbeitung</p>
+            </div>
+
+            <div class="nav-card" onclick="showDetail('wirtschaft')">
+                <div class="nav-card-icon">🏭</div>
+                <h3>Wirtschaft</h3>
+                <p>IG Farben, Krupp & Co. nach 1945</p>
+            </div>
+        </div>
+
+        <!-- DETAIL SECTIONS -->
+
+        <!-- BND -->
+        <div id="detail-bnd" class="detail-section">
+            <button class="back-btn" onclick="showOverview()">← Zurück zur Übersicht</button>
+            
+            <h2>🕵️ Bundesnachrichtendienst (BND)</h2>
+            
+            <div class="stats-box">
+                <strong>📊 Die erschütternde Bilanz:</strong>
+                <p>• <strong>10-20% der BND-Mitarbeiter</strong> hatten "Blut an den Händen"</p>
+                <p>• Sie waren nicht nur NSDAP-Mitglieder, sondern <strong>aktiv an Mordaktionen beteiligt</strong></p>
+                <p>• <strong>Mehr als 30 spätere BND-Mitarbeiter</strong> waren bei Einsatzgruppen (Massenerschießungen)</p>
+            </div>
+
+            <h3>Die zentrale Erkenntnis</h3>
+            <p>Historiker Gerhard Sälter stellte die Frage: Wie konnten sich einzelne NS-Mörder in den deutschen Nachrichtendienst "reinschleichen"? Seine Antwort nach 10 Jahren Forschung:</p>
+            
+            <div class="warning-box">
+                <p style="font-size: 18px; font-weight: 600; color: var(--color-warning);">
+                    "Da hat sich keiner reingeschlichen, sondern man hatte eine Leitung, die die einfach gewollt hat."
+                </p>
+            </div>
+
+            <h3>Konkrete Beispiele: NS-Täter im BND</h3>
+            
+            <h4>Helmut Schreiber (BND-Mitarbeiter 1957-1980)</h4>
+            <p><strong>NS-Vergangenheit:</strong></p>
+            <ul>
+                <li>Führungsstab der SS-Division "Das Reich" (1944 in Südfrankreich)</li>
+                <li><strong>Mitverantwortlich für das Massaker von Oradour-sur-Glane</strong> (10. Juni 1944): 642 Männer, Frauen und Kinder brutal ermordet</li>
+                <li>Zuvor: KZ Buchenwald (Totenkopfstandarte 9), Ghetto Lublin (Polen), Einsatzgruppe B in der Sowjetunion</li>
+                <li>Galt als "radikalisierter Weltanschauungskrieger" mit besonderer Brutalität</li>
+            </ul>
+
+            <h4>Gustav Grauer (BND-Mitarbeiter)</h4>
+            <p><strong>NS-Vergangenheit:</strong></p>
+            <ul>
+                <li>1941: Stellvertretender Kommandeur des Einsatzkommandos 3 der Einsatzgruppe A</li>
+                <li>Diese Gruppe tötete innerhalb weniger Monate <strong>mehr als 130.000 Zivilisten im Baltikum</strong>, vor allem Juden</li>
+            </ul>
+
+            <h3>Reinhard Gehlen: Der Architekt der Kontinuität</h3>
+            <p>Reinhard Gehlen, über 20 Jahre Chef der "Organisation Gehlen" (später BND), rekrutierte gezielt ehemalige SS- und Gestapoleute. Sein Ziel laut Historiker Sälter:</p>
+            
+            <div class="info-box">
+                <h4>Gehlens Vision</h4>
+                <p>"Auslandsgeheimdienst, Inlandsgeheimdienst und politische Polizei mit exekutiven Vollmachten in einer Behörde verschmelzen sollte, die von ihm geleitet wird."</p>
+                <p><strong>Das ist einfach das Reichssicherheitshauptamt.</strong></p>
+            </div>
+
+            <p>Das Reichssicherheitshauptamt war im Dritten Reich die Terrorzentrale, die den Holocaust organisierte und für zahlreiche Kriegsverbrechen verantwortlich war.</p>
+
+            <h3>Die "vier Lügen" des BND</h3>
+            <p>1956 wurde der Nachrichtendienst Bundesbehörde und unterstand dem Bundeskanzleramt. BND-Chef Gehlen wies alle Nachfragen stereotyp zurück:</p>
+            
+            <ol>
+                <li><strong>"Nur ein Prozent"</strong> NS-belastete Mitarbeiter → FALSCH</li>
+                <li><strong>"Alle entnazifiziert"</strong> → FALSCH</li>
+                <li><strong>"Alle überprüft"</strong> → FALSCH</li>
+                <li><strong>"Alle ok"</strong> → FALSCH</li>
+            </ol>
+
+            <p>Das Kanzleramt gab sich damit zufrieden und griff nicht durch.</p>
+
+            <h3>Adenauer und Globke: Politische Billigung</h3>
+            <p>Bundeskanzler Konrad Adenauer intervenierte nicht. Historiker Klaus-Dietmar Henke vermutet, dass Adenauer den BND für <strong>parteipolitische Zwecke</strong> benutzte – er ließ die SPD-Zentrale ausspionieren. Diesen Kanal wollte er nicht verschließen.</p>
+
+            <p>Die politische Kontrolle lag beim Chef des Kanzleramtes, <strong>Hans Globke</strong> – selbst ein "Hauptarchitekt der juristischen Bemäntelung der Verfolgung und Ermordung der europäischen Juden".</p>
+
+            <h3>Folgen für die Demokratie</h3>
+            <ul>
+                <li><strong>Kein Unrechtsbewusstsein</strong> im BND: "Da gab es kein Bewusstsein davon, dass es nicht in Ordnung war, Millionen von Juden zu töten"</li>
+                <li>NS-Kontinuitäten waren im BND <strong>größer als in jeder anderen Behörde</strong></li>
+                <li>Erst 2011 setzte der BND eine Historikerkommission ein</li>
+            </ul>
+
+            <div class="sources">
+                <h4>📚 Quellen</h4>
+                <p><strong>Gerhard Sälter:</strong> Forschungsergebnisse der Unabhängigen Historikerkommission zur Erforschung der Geschichte des BND 1945-1968</p>
+                <p><strong>tagesschau.de:</strong> "BND beschäftigte gezielt NS-Täter" (Investigativbericht von Christine Rütten, hr)</p>
+                <p><strong>Klaus-Dietmar Henke:</strong> Sprecher der Unabhängigen Historikerkommission – Zitate aus Pressekonferenz</p>
+            </div>
+        </div>
+
+        <!-- JUSTIZ -->
+        <div id="detail-justiz" class="detail-section">
+            <button class="back-btn" onclick="showOverview()">← Zurück zur Übersicht</button>
+            
+            <h2>⚖️ Justiz: Richter und Staatsanwälte</h2>
+            
+            <div class="stats-box">
+                <strong>📊 Personelle Kontinuität:</strong>
+                <p>• <strong>Fast 90% aller ehemaligen NSDAP-Mitglieder</strong> unter Richtern und Staatsanwälten kehrten nach 1945 in den Justizdienst zurück</p>
+                <p>• Viele hatten an <strong>politischen Todesurteilen</strong> mitgewirkt</p>
+                <p>• Insgesamt mindestens <strong>35.000 Todesurteile</strong> durch deutsche Gerichte 1933-1945</p>
+            </div>
+
+            <h3>Rolle im NS-Regime</h3>
+            <p>Richter und Staatsanwälte stützten die NS-Gewaltherrschaft durch willkürliche Urteile. Sie folgten den <strong>"Richter-Leitsätzen"</strong> von Hans Frank (1936):</p>
+            
+            <div class="warning-box">
+                <p style="font-weight: 600;">"Alle Entscheidungen des 'Führers' sind ohne Prüfung als geltendes Recht zu akzeptieren."</p>
+            </div>
+
+            <h3>Skandalöser Einzelfall: München 1951</h3>
+            <p>Am 16. Februar 1951 bestätigte das Landgericht München die <strong>Todesurteile gegen die Widerstandskämpfer der Weißen Rose als rechtens</strong>. NS-Richter urteilten also nach 1945 über ehemalige NS-Gegner.</p>
+
+            <h3>Wie funktionierte die Entnazifizierung?</h3>
+            <p>Juristen rechtfertigten sich nach 1945 damit, sie hätten "nur geltendes Recht angewandt". Der Personalmangel führte dazu, dass man schnell auf "altgediente Richter mit Parteibuch" zurückgriff.</p>
+
+            <p>Gegenseitige <strong>"Persilscheine"</strong> (entlastende Zeugnisse) halfen bei der Rückkehr in den Dienst. Kollegen bescheinigten sich wechselseitig politische Unschuld.</p>
+
+            <h3>Folgen für die Demokratie</h3>
+            <ul>
+                <li>NS-Richter urteilten nach 1945 über ehemalige NS-Gegner und Widerstandskämpfer</li>
+                <li>Die Strafverfolgung von NS-Verbrechen wurde verzögert und behindert</li>
+                <li>Das Vertrauen in die Justiz als demokratische Institution litt erheblich</li>
+                <li>Erst in den 1960er Jahren begann eine zaghafte Aufarbeitung</li>
+            </ul>
+
+            <div class="info-box">
+                <h4>Beispiel Bremen</h4>
+                <p>In Bremen kehrten nahezu alle Richter und Staatsanwälte mit NS-Vergangenheit zurück. Personalmangel war die offizielle Begründung – tatsächlich gab es aber eine bewusste Integrationspolitik, die NS-Belastung tolerierte.</p>
+            </div>
+
+            <div class="sources">
+                <h4>📚 Quellen</h4>
+                <p><strong>zeitgeschichte-online.de:</strong> "Der Dolch unter der Richterrobe" – Artikel über NS-Richter in der BRD</p>
+                <p><strong>bpb.de:</strong> "Personelle und ideologische Kontinuitäten in der Bremer Justiz"</p>
+                <p><strong>inlibra.com:</strong> "Justiz-Kontinuitäten nach 1945" (PDF-Studie)</p>
+            </div>
+        </div>
+
+        <!-- MEDIZIN -->
+        <div id="detail-medizin" class="detail-section">
+            <button class="back-btn" onclick="showOverview()">← Zurück zur Übersicht</button>
+            
+            <h2>💉 Medizin: Ärzte und Ärztinnen</h2>
+            
+            <div class="stats-box">
+                <strong>📊 Personelle Kontinuität:</strong>
+                <p>• <strong>45% aller 52.000 Mediziner</strong> wurden NSDAP-Mitglieder</p>
+                <p>• Viele NS-Ärzte arbeiteten nach 1945 ungehindert weiter</p>
+                <p>• Beteiligung an: <strong>350.000 Zwangssterilisationen</strong>, Euthanasie-Morden, Menschenversuchen</p>
+            </div>
+
+            <h3>Rolle im NS-Regime</h3>
+            <p>Ärzte führten hunderttausendfach Zwangssterilisationen durch und beteiligten sich an der "Aktion T4" (Ermordung von mindestens 70.000 kranken und behinderten Menschen). In KZs führten sie Menschenversuche mit tausenden Todesopfern durch.</p>
+
+            <h3>Konkrete Beispiele: Von KZ zu Chefarzt</h3>
+            
+            <div class="timeline-item">
+                <strong>Dr. Lotte Albers</strong>
+                <p><strong>NS-Verbrechen:</strong> Tötete mindestens 14 behinderte Kinder in Hamburg</p>
+                <p><strong>Nach 1945:</strong> Arbeitete bis 1986 als Kinderärztin – unbehelligt</p>
+            </div>
+
+            <div class="timeline-item">
+                <strong>Dr. Wilhelm Beiglböck</strong>
+                <p><strong>NS-Verbrechen:</strong> KZ-Arzt in Dachau, führte grausame Menschenversuche durch</p>
+                <p><strong>Nach 1945:</strong> Verurteilt zu 10 Jahren Haft, dann Chefarzt in Buxtehude bis 1963</p>
+            </div>
+
+            <h3>Entnazifizierung in der Medizin</h3>
+            <p>Luftfahrtmediziner und andere Ärzte präsentierten sich als "unpolitische Wissenschaftler" in Abgrenzung zur "verbrecherischen SS". Diese Strategie war erfolgreich – viele kehrten in verantwortliche Positionen zurück.</p>
+
+            <h3>Folgen für die Demokratie</h3>
+            <ul>
+                <li>NS-Mediziner prägten das Gesundheitswesen der BRD bis in die 1980er Jahre</li>
+                <li>Opfer von Zwangssterilisationen wurden lange nicht entschädigt</li>
+                <li>Die medizinische Ethik wurde jahrzehntelang von Tätern mitbestimmt</li>
+                <li>Erst ab den 1990er Jahren begann systematische Aufarbeitung</li>
+            </ul>
+
+            <div class="warning-box">
+                <p><strong>⚠️ Psychiatrie Niedersachsen:</strong> Eine Studie von 2024 zeigt, dass selbst in der Psychiatrie – wo Euthanasie-Verbrechen stattfanden – personelle Kontinuitäten bis in die 1970er Jahre bestanden.</p>
+            </div>
+
+            <div class="sources">
+                <h4>📚 Quellen</h4>
+                <p><strong>Wikipedia:</strong> "Medizin im Nationalsozialismus" (mit umfangreichen Literaturangaben)</p>
+                <p><strong>Wikipedia:</strong> "Liste von KZ-Ärzten und anderen Beteiligten an NS-Medizinverbrechen"</p>
+                <p><strong>hsozkult.de:</strong> "Medizintäter. Ärzte und Ärztinnen im Spiegel der NS-Verbrechen" (Tagungsbericht 2019)</p>
+                <p><strong>YouTube/SR:</strong> "NS-Ärzte: Ihre Verbrechen, ihre Karrieren – Saarländische Mediziner nach 1945"</p>
+                <p><strong>ms.niedersachsen.de:</strong> "Personelle Kontinuitäten in der Psychiatrie Niedersachsens nach 1945" (Abschlussbericht 2024)</p>
+            </div>
+        </div>
+
+        <!-- BUNDESWEHR -->
+        <div id="detail-bundeswehr" class="detail-section">
+            <button class="back-btn" onclick="showOverview()">← Zurück zur Übersicht</button>
+            
+            <h2>⚔️ Bundeswehr: Offiziere und Soldaten</h2>
+            
+            <div class="stats-box">
+                <strong>📊 Personelle Kontinuität:</strong>
+                <p>• <strong>12.360 ehemalige Wehrmacht-Offiziere</strong> bei 14.900 Berufssoldaten im Offizierskorps 1959</p>
+                <p>• <strong>300 Offiziere aus dem SS-Führerkorps</strong></p>
+                <p>• Etwa <strong>40.000 ehemalige Offiziere und Unteroffiziere der Wehrmacht</strong> bildeten den Kader der neuen Streitkräfte</p>
+            </div>
+
+            <h3>Rolle im NS-Regime</h3>
+            <p>Viele Wehrmacht-Offiziere waren an Kriegsverbrechen beteiligt (z.B. Massenerschießungen, Partisanenbekämpfung). Die Wehrmacht war "in ihrer Spitze, mit Truppenteilen und mit Soldaten in Verbrechen des Nationalsozialismus verstrickt" (Verteidigungsminister Volker Rühe, 1995).</p>
+
+            <h3>Die "Geheimarmee" vor der Bundeswehr</h3>
+            <p>Bundeskanzler Adenauer duldete die Gründung einer <strong>Geheimarmee aus ehemaligen SS- und Wehrmachtsleuten</strong> noch vor der offiziellen Gründung der Bundeswehr 1955.</p>
+            
+            <div class="info-box">
+                <h4>Organisator: Albert Schnez</h4>
+                <p>Albert Schnez, ein ehemaliger Wehrmachtsgeneral, organisierte diese Geheimarmee. Später wurde er Bundeswehr-Heeresinspektor – eine der höchsten Positionen im deutschen Militär.</p>
+            </div>
+
+            <h3>Traditionsverständnis: Distanz und Kontinuität</h3>
+            <p><strong>Offiziell:</strong> Die Bundeswehr distanzierte sich von der Wehrmacht und ihrer Verstrickung in NS-Verbrechen.</p>
+            <p><strong>Praktisch:</strong> Das Bundeswehr-Kommando Spezialkräfte (KSK) übernahm die Patenschaft für die 78. Sturm- und Infanteriedivision der Wehrmacht, die 1943 Verbrechen an der sowjetischen Zivilbevölkerung begangen hatte.</p>
+
+            <h3>Folgen für die Demokratie</h3>
+            <ul>
+                <li>"Restaurativer Impuls" durch hohe personelle Kontinuität</li>
+                <li>Die Bundeswehr wurde durch ehemalige Wehrmacht-Offiziere geprägt – kulturell und personell</li>
+                <li>Rechtsextreme Tendenzen in der Bundeswehr (Franco A., 2017) als strukturelles Problem</li>
+                <li>Diskussionen um Traditionspflege und NS-Bezüge dauern bis heute an</li>
+            </ul>
+
+            <div class="warning-box">
+                <p><strong>Zitat Die Welt:</strong> "Praktisch die gesamte Bundeswehrelite hatte ihre Wurzeln in der Wehrmacht."</p>
+            </div>
+
+            <div class="sources">
+                <h4>📚 Quellen</h4>
+                <p><strong>wissenschaft-und-frieden.de:</strong> "Kontinuität – Diskontinuität Bundeswehr – Wehrmacht"</p>
+                <p><strong>marx21.de:</strong> "Nazis in der Bundeswehr: 'Der Staatsbürger in Uniform hat...' "</p>
+                <p><strong>taz.de:</strong> "Wehrmacht und Bundeswehr: Historische Kontinuitäten"</p>
+                <p><strong>bpb.de:</strong> "Das Verhältnis von Wehrmacht und NS-Staat und die Frage der Traditionspflege"</p>
+                <p><strong>zms.bundeswehr.de:</strong> "Kriegserfahrungen der frühen Heeresgeneralität der Bundeswehr"</p>
+            </div>
+        </div>
+
+        <!-- AUSWÄRTIGES AMT -->
+        <div id="detail-auswaertiges" class="detail-section">
+            <button class="back-btn" onclick="showOverview()">← Zurück zur Übersicht</button>
+            
+            <h2>🌍 Auswärtiges Amt: Diplomaten</h2>
+            
+            <div class="stats-box">
+                <strong>📊 Personelle Kontinuität:</strong>
+                <p>• Nach 1945 gab es eine <strong>erhebliche personelle Kontinuität</strong> der alten Diplomatenelite</p>
+                <p>• Viele Diplomaten waren NSDAP-, SA- oder SS-Mitglieder gewesen</p>
+            </div>
+
+            <h3>Rolle im NS-Regime</h3>
+            <p>Das Auswärtige Amt war seit 1933 an der Gewaltpolitik des Nationalsozialismus beteiligt. Es wirkte <strong>aktiv an der Verfolgung und Ermordung der europäischen Juden</strong> mit.</p>
+            
+            <div class="warning-box">
+                <p style="font-size: 17px; font-weight: 600;">28 Mitarbeiter der "Dienststelle Ribbentrop" wechselten ins Auswärtige Amt und nahmen später "Schlüsselfunktionen in der Vernichtungspolitik" ein.</p>
+            </div>
+
+            <p>Historiker Eckart Conze stellte fest: <strong>"Das Auswärtige Amt war eine verbrecherische Organisation."</strong></p>
+
+            <h3>Vertuschung nach 1945</h3>
+            <p>Deutsche Diplomaten versuchten nach Kriegsende, sich "rein zu waschen": vor Gericht, politisch und publizistisch durch <strong>"Geschichtslegenden"</strong>.</p>
+
+            <p>Historiker Conze: "Bestürzend, wie deutsche Diplomaten im Bewusstsein ihrer Schuld versuchten, sich rein zu waschen."</p>
+
+            <h3>Beispiele für Kontinuität</h3>
+            <ul>
+                <li>Ehemalige Mitarbeiter der NS-Diplomatie setzten Karrieren fort</li>
+                <li>Aktive Beteiligung an Holocaust und Kriegsverbrechen wurde verschwiegen</li>
+                <li>Aufarbeitung fand erst ab den 2000er Jahren statt</li>
+            </ul>
+
+            <h3>Folgen für die Demokratie</h3>
+            <ul>
+                <li>Die Verstrickung in NS-Verbrechen wurde jahrzehntelang verschwiegen</li>
+                <li>Das Auswärtige Amt präsentierte sich als "sauber" – eine bewusste Lüge</li>
+                <li>Erst 2005 berief Außenminister Joschka Fischer eine Unabhängige Historikerkommission</li>
+                <li>Die Aufarbeitung dauerte bis 2010</li>
+            </ul>
+
+            <div class="info-box">
+                <h4>Die Historikerkommission 2005-2010</h4>
+                <p>Unter Leitung von Eckart Conze untersuchte eine Historikerkommission die Geschichte des Auswärtigen Amts 1933-1945. Das Ergebnis war eindeutig: Das Amt war keine passive Institution, sondern aktiver Täter.</p>
+            </div>
+
+            <div class="sources">
+                <h4>📚 Quellen</h4>
+                <p><strong>uni-marburg.de:</strong> "Auswärtiges Amt wirkte an Nazi-Verbrechen mit" (Pressemitteilung 2010)</p>
+                <p><strong>ifz-muenchen.de:</strong> "Das Auswärtige Amt, die NS-Diktatur und der Holocaust" (PDF-Artikel)</p>
+                <p><strong>cicero.de:</strong> "Unselige Kontinuitäten" – Interview mit Historiker Eckart Conze</p>
+                <p><strong>auswaertiges-amt.de:</strong> "Das Amt und die Vergangenheit" (offizielle Historikerkommission)</p>
+                <p><strong>apb-tutzing.de:</strong> "Das Auswärtige Amt in der NS-Diktatur"</p>
+            </div>
+        </div>
+
+        <!-- POLIZEI -->
+        <div id="detail-polizei" class="detail-section">
+            <button class="back-btn" onclick="showOverview()">← Zurück zur Übersicht</button>
+            
+            <h2>👮 Polizei: Kriminal- und Ordnungspolizei</h2>
+            
+            <div class="stats-box">
+                <strong>📊 Personelle Kontinuität:</strong>
+                <p>• <strong>Mindestens 600.000 Menschen</strong> wurden durch Einheiten der Ordnungspolizei getötet</p>
+                <p>• An <strong>62% der Morde in der Shoah</strong> waren Polizisten beteiligt</p>
+                <p>• Nach 1945: Einige der an Massenerschießungen beteiligten Polizeibeamten setzten ihre Karriere in der BRD fort</p>
+            </div>
+
+            <h3>Rolle im NS-Regime</h3>
+            <p>Die Polizei war ein <strong>"Terrorinstrument des NS-Staates"</strong>. Ab 1939 verschmolzen SS und Polizei im Reichssicherheitshauptamt.</p>
+            
+            <p>Kriminal- und Ordnungspolizei beteiligten sich an:</p>
+            <ul>
+                <li>Ausgrenzung und Verfolgung von Juden</li>
+                <li>Deportationen in Konzentrations- und Vernichtungslager</li>
+                <li>Massenerschießungen in Osteuropa</li>
+                <li>Bewachung von Ghettos</li>
+            </ul>
+
+            <h3>Entnazifizierung der Polizei</h3>
+            <p>Kriminal- und Ordnungspolizei galten als <strong>"nicht belastet"</strong> (im Gegensatz zur Gestapo). Beamte stellten sich gegenseitig "Persilscheine" aus.</p>
+
+            <div class="warning-box">
+                <p><strong>Beim BKA (Ende 1960er Jahre):</strong></p>
+                <ul>
+                    <li>Ein Viertel des Führungspersonals: ehemalige SS-Angehörige</li>
+                    <li>Die Hälfte aller Beamten: NSDAP-Mitglieder</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <p><strong>In NRW:</strong></p>
+                <p>50-60 höhere Kriminalbeamte waren ehemalige SS-Angehörige, darunter die Chefs der Kriminalpolizei in Aachen, Bonn, Gelsenkirchen, Krefeld, Köln und Essen.</p>
+            </div>
+
+            <h3>Folgen für die Demokratie</h3>
+            <ul>
+                <li>Neben personeller Kontinuität blieben auch <strong>polizeiliche Ordnungsvorstellungen</strong> aus der NS-Zeit wirksam</li>
+                <li>Kategorisierung von Jugendlichen als "asozial" wurde fortgesetzt</li>
+                <li>"Vorbeugende Verbrechensbekämpfung" knüpfte nahtlos an NS-Praxis an</li>
+                <li>Misstrauen gegenüber politisch Andersdenkenden blieb bestehen</li>
+            </ul>
+
+            <div class="info-box">
+                <h4>Kontinuität der Denkmuster</h4>
+                <p>Nicht nur Personen, sondern auch <strong>Ideologien</strong> setzten sich fort: Die Vorstellung von "gefährlichen Personen", die präventiv überwacht werden müssen, stammt direkt aus der NS-Zeit.</p>
+            </div>
+
+            <div class="sources">
+                <h4>📚 Quellen</h4>
+                <p><strong>lotta-magazin.de:</strong> "Bruchlose Kontinuität" (Artikel zur Polizei-Kontinuität, 2017)</p>
+                <p><strong>bpb.de:</strong> "Die Polizei in Deutschland 1945-1989"</p>
+                <p><strong>ushmm.org:</strong> "Die Gestapo: Übersicht" (Holocaust-Enzyklopädie)</p>
+            </div>
+        </div>
+
+        <!-- ENTNAZIFIZIERUNG -->
+        <div id="detail-entnazifizierung" class="detail-section">
+            <button class="back-btn" onclick="showOverview()">← Zurück zur Übersicht</button>
+            
+            <h2>📄 Entnazifizierung: Warum scheiterte die "Säuberung"?</h2>
+
+            <h3>Das Verfahren</h3>
+            <p>Die Alliierten legten am 5. März 1946 die Entnazifizierung in deutsche Hände. <strong>Spruchkammern</strong> sollten die politische Gesinnung von Millionen Deutschen prüfen.</p>
+
+            <div class="info-box">
+                <h4>Fünf Kategorien der Entnazifizierung</h4>
+                <ol>
+                    <li><strong>Hauptschuldige</strong> (z.B. hohe NS-Funktionäre)</li>
+                    <li><strong>Belastete</strong> (aktive Unterstützer)</li>
+                    <li><strong>Minderbelastete</strong> (weniger aktive Parteimitglieder)</li>
+                    <li><strong>Mitläufer</strong> (formale Mitgliedschaft)</li>
+                    <li><strong>Entlastete</strong> (unbelastet)</li>
+                </ol>
+            </div>
+
+            <h3>Die "Persilscheine"</h3>
+            <p>Belastete Personen reichten <strong>entlastende Zeugnisse</strong> bei den Spruchkammern ein. Umgangssprachlich: <strong>"Persilscheine"</strong> (nach dem Waschmittel Persil = "reinwaschen").</p>
+
+            <p>Historiker Lutz Niethammer nannte die Spruchkammern eine <strong>"Mitläuferfabrik"</strong> – fast jeder wurde als "Mitläufer" eingestuft und konnte weitermachen.</p>
+
+            <h3>Das Ergebnis</h3>
+            <div class="stats-box">
+                <strong>📊 Bilanz der Entnazifizierung:</strong>
+                <p>• Nur <strong>1,4% der zu Entnazifizierenden</strong> galten als "Hauptschuldige" und "Belastete"</p>
+                <p>• Fast alle Beamten und Angestellten kehrten in den öffentlichen Dienst zurück</p>
+                <p>• Ab Anfang der 1950er Jahre "fluteten" ehemalige NSDAP-Mitglieder zurück in Ämter</p>
+            </div>
+
+            <h3>Gründe für das Scheitern</h3>
+            
+            <h4>1. Personalmangel</h4>
+            <p>Ohne ehemalige NSDAP-Mitglieder funktionierte die Verwaltung nicht. Es gab zu wenige "unbelastete" Fachkräfte für Justiz, Medizin, Verwaltung.</p>
+
+            <h4>2. Kalter Krieg</h4>
+            <p>Antikommunismus wurde wichtiger als Entnazifizierung. Ehemalige Nazis galten als "Bollwerk gegen den Kommunismus".</p>
+
+            <h4>3. Gesellschaftlicher Druck</h4>
+            <p>Deutsche verstanden Entnazifizierung als "rasch zu Ende zu bringende Pflichtübung". Es gab wenig echten Willen zur Aufarbeitung.</p>
+
+            <h4>4. Gegenseitige Solidarität</h4>
+            <p>Eliten deckten sich gegenseitig. Richter bestätigten Richter, Ärzte bestätigten Ärzte, Beamte bestätigten Beamte.</p>
+
+            <h3>Folgen für die Demokratie</h3>
+            <ul>
+                <li>Die "Stunde Null" war keine Stunde Null – es gab massive Kontinuitäten</li>
+                <li>NS-Täter prägten die junge Demokratie in allen Bereichen</li>
+                <li>Das Vertrauen in Institutionen litt (bis heute)</li>
+                <li>Echte Aufarbeitung begann erst in den 1960er Jahren (Auschwitz-Prozesse)</li>
+            </ul>
+
+            <div class="warning-box">
+                <p><strong>Zitat Historiker:</strong> "Die Entnazifizierung war der Versuch, eine Diktatur mit demokratischen Mitteln aufzuarbeiten – und scheiterte an der Realität der deutschen Gesellschaft."</p>
+            </div>
+
+            <div class="sources">
+                <h4>📚 Quellen</h4>
+                <p><strong>Wikipedia:</strong> "Persilschein" (mit umfangreichen Literaturangaben)</p>
+                <p><strong>rothenburg-unterm-hakenkreuz.de:</strong> "Entnazifizierung: Die Spruchkammer Rothenburg"</p>
+                <p><strong>deutschlandfunk.de:</strong> "Entnazifizierung vor 75 Jahren – Demokratie-Grundstein mit Macken"</p>
+                <p><strong>100objekte.kit.edu:</strong> "Spruchkammerbescheid" (Beispiel eines Persilscheins)</p>
+                <p><strong>alliiertenmuseum.de:</strong> "Entnazifizierung" (Überblick)</p>
+            </div>
+        </div>
+
+        <!-- ADENAUER & GLOBKE -->
+        <div id="detail-adenauer" class="detail-section">
+            <button class="back-btn" onclick="showOverview()">← Zurück zur Übersicht</button>
+            
+            <h2>🎩 Adenauer & Globke: Pragmatismus statt Aufarbeitung</h2>
+
+            <h3>Hans Globke – Die "graue Eminenz"</h3>
+            <p><strong>Position:</strong> Chef des Bundeskanzleramts unter Konrad Adenauer (1953-1963)</p>
+
+            <div class="stats-box">
+                <strong>NS-Vergangenheit von Hans Globke:</strong>
+                <p>• Mitverfasser und Kommentator der <strong>Nürnberger Rassengesetze</strong></p>
+                <p>• Verantwortlich für die <strong>Namensänderungsverordnung 1938</strong> (Juden mussten "Israel" oder "Sara" als Zwangsnamen tragen)</p>
+                <p>• Historiker Henke: "Ein Hauptarchitekt der juristischen Bemäntelung der Verfolgung und Ermordung der europäischen Juden"</p>
+                <p>• Henke: "Er war ein <strong>Mittäter des Holocaust</strong>"</p>
+            </div>
+
+            <p>Adenauer machte Globke trotzdem zu seinem engsten Mitarbeiter – "eine überzeugende Erklärung gibt es nicht" (konrad-adenauer.de).</p>
+
+            <h3>Adenauers Pragmatismus</h3>
+            <p>Adenauer vertrat eine <strong>"Integrationspolitik"</strong> statt "Entnazifizierung": Ehemalige NSDAP-Mitglieder sollten eingebunden werden, sofern sie im Entnazifizierungsverfahren als "entlastet" galten.</p>
+
+            <div class="warning-box">
+                <p style="font-size: 17px; font-weight: 600;">Adenauer am 2. April 1952: "Man schüttet kein dreckiges Wasser aus, wenn man kein reines hat."</p>
+            </div>
+
+            <p>Er drängte auf <strong>"Gnadenakte in größerem Umfange"</strong> für Kriegsverbrecher. Das bedeutete: Frühe Freilassung von NS-Tätern aus alliierten Gefängnissen.</p>
+
+            <h3>Warum griff Adenauer nicht durch?</h3>
+            <p>Historiker Klaus-Dietmar Henke vermutet, dass Adenauer den BND für <strong>parteipolitische Zwecke</strong> benutzte:</p>
+            <ul>
+                <li>Er ließ die SPD-Zentrale ausspionieren</li>
+                <li>Diesen Kanal wollte er sich nicht verschließen</li>
+                <li>Dafür tolerierte er NS-Täter im BND</li>
+            </ul>
+
+            <h3>Folgen für die Demokratie</h3>
+            <div class="stats-box">
+                <strong>📊 Bilanz:</strong>
+                <p>1961 lag der Anteil ehemaliger NSDAP-Mitglieder in <strong>leitenden Positionen des Bundesinnenministeriums bei 66%</strong>.</p>
+            </div>
+
+            <p>Globke wurde zum <strong>"Symbol für die 'unbewältigte' Vergangenheit"</strong>. Seine Präsenz im Bundeskanzleramt zeigte: Die BRD war bereit, NS-Täter zu integrieren, wenn sie nützlich waren.</p>
+
+            <h3>Adenauers Rechtfertigung</h3>
+            <p>Adenauer rechtfertigte seine Politik mit:</p>
+            <ul>
+                <li><strong>Personalmangel:</strong> Es gab zu wenige "unbelastete" Fachkräfte</li>
+                <li><strong>Kalter Krieg:</strong> Antikommunismus war wichtiger als Entnazifizierung</li>
+                <li><strong>Stabilität:</strong> Integration war wichtiger als Bestrafung</li>
+            </ul>
+
+            <div class="info-box">
+                <h4>Historische Bewertung</h4>
+                <p>Adenauers Pragmatismus wird heute kritisch gesehen: Er ermöglichte zwar schnellen Wiederaufbau, aber verzögerte die moralische und juristische Aufarbeitung um Jahrzehnte.</p>
+            </div>
+
+            <div class="sources">
+                <h4>📚 Quellen</h4>
+                <p><strong>Wikipedia:</strong> "Hans Globke" (mit umfangreichen Literaturangaben)</p>
+                <p><strong>konrad-adenauer.de:</strong> "Umgang mit der NS-Vergangenheit"</p>
+                <p><strong>geschichte-lernen.net:</strong> "Der Umgang mit der NS-Vergangenheit in der Ära Adenauer"</p>
+                <p><strong>konrad-adenauer.de:</strong> "Hans Globke" (Biografie)</p>
+                <p><strong>deutschlandfunkkultur.de:</strong> "Adenauers graue Eminenz, Hans Globke"</p>
+            </div>
+        </div>
+
+        <!-- WIRTSCHAFT -->
+        <div id="detail-wirtschaft" class="detail-section">
+            <button class="back-btn" onclick="showOverview()">← Zurück zur Übersicht</button>
+            
+            <h2>🏭 Wirtschaft: IG Farben, Krupp & Co.</h2>
+
+            <h3>IG Farben: Der größte Chemiekonzern im NS</h3>
+            <p>Die IG Farben war eine Fusion von BASF, Bayer, Hoechst und anderen Chemieunternehmen – der größte Chemiekonzern der Welt.</p>
+
+            <div class="stats-box">
+                <strong>Rolle im NS:</strong>
+                <p>• <strong>Größter Einzelfinanzierer der NSDAP</strong></p>
+                <p>• Zwangsarbeit im KZ Auschwitz III Monowitz (mindestens 30.000 Zwangsarbeiter)</p>
+                <p>• Produktion von <strong>Zyklon B</strong> (Giftgas für Massenmord in Auschwitz)</p>
+                <p>• Enge Kooperation mit der SS</p>
+            </div>
+
+            <h3>Der IG-Farben-Prozess (1947-1948)</h3>
+            <p>Im Nürnberger Nachfolgeprozess wurden 23 Manager der IG Farben angeklagt. Das Ergebnis:</p>
+            <ul>
+                <li>13 Angeklagte verurteilt (geringe Haftstrafen: 1,5 bis 8 Jahre)</li>
+                <li>10 Angeklagte freigesprochen</li>
+                <li>Alle verurteilten Angeklagten wurden bis 1951 vorzeitig entlassen</li>
+            </ul>
+
+            <h3>Nach 1945: Entflechtung und Neugründung</h3>
+            <p>Die IG Farben wurde in ihre ursprünglichen Bestandteile aufgeteilt:</p>
+            <ul>
+                <li><strong>BASF</strong></li>
+                <li><strong>Bayer</strong></li>
+                <li><strong>Hoechst</strong></li>
+            </ul>
+
+            <div class="warning-box">
+                <p><strong>Das Paradox:</strong> Alle drei Unternehmen sind heute größer und mächtiger als die IG Farben jemals war. Die Entflechtung war keine Bestrafung, sondern eine Neuordnung.</p>
+            </div>
+
+            <h3>Andere Unternehmen: Daimler-Benz, Krupp, Volkswagen</h3>
+            <p>Viele deutsche Unternehmen profitierten von:</p>
+            <ul>
+                <li>Zwangsarbeit (Millionen von Zwangsarbeitern)</li>
+                <li>NS-Rüstungsproduktion (Waffen, Panzer, LKWs)</li>
+                <li>"Arisierung" (Enteignung jüdischer Unternehmen)</li>
+            </ul>
+
+            <p>Nach 1945 wehrten sich Unternehmen lange gegen individuelle Entschädigungsansprüche.</p>
+
+            <h3>Aufarbeitung erst ab den 1980er Jahren</h3>
+            <p>Erst ab den 1980er Jahren begannen Unternehmen, ihre eigene Geschichte aufzuarbeiten. Sie beauftragten Historiker mit Studien zur NS-Zeit.</p>
+
+            <div class="info-box">
+                <h4>Entschädigungsfonds (2000)</h4>
+                <p>Im Jahr 2000 richtete die deutsche Wirtschaft gemeinsam mit der Bundesregierung einen <strong>Entschädigungsfonds für ehemalige Zwangsarbeiter</strong> ein. Die Zahlungen waren symbolisch, aber ein Zeichen der Verantwortung.</p>
+            </div>
+
+            <h3>Folgen für die Demokratie</h3>
+            <ul>
+                <li>Wirtschaftsbosse mit NS-Vergangenheit prägten die Nachkriegswirtschaft</li>
+                <li>Kontinuität von Macht und Kapital trotz NS-Verstrickung</li>
+                <li>Verspätete Entschädigung für Zwangsarbeiter (erst ab 2000)</li>
+                <li>Moralische Frage: Kann man von "Blutgeld" profitieren?</li>
+            </ul>
+
+            <div class="sources">
+                <h4>📚 Quellen</h4>
+                <p><strong>tu-chemnitz.de:</strong> "IG Farben Reader" (PDF mit umfassender Dokumentation)</p>
+                <p><strong>Wikipedia:</strong> "I.G.-Farben-Prozess"</p>
+                <p><strong>spiegel.de:</strong> "Deutsche Unternehmen haben vom Nationalsozialismus profitiert"</p>
+                <p><strong>handelsblatt.com:</strong> "Geschichte der IG Farben: Der Konzern, der Hitler den Weltkrieg ermöglichte"</p>
+                <p><strong>jacobin.de:</strong> "Wie Nazi-Milliardäre im Nachkriegsdeutschland noch reicher wurden"</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showDetail(section) {
+            // Hide intro and nav
+            document.getElementById('intro-section').classList.add('hidden');
+            document.getElementById('nav-grid').classList.add('hidden');
+
+            // Hide all detail sections
+            const detailSections = document.querySelectorAll('.detail-section');
+            detailSections.forEach(section => section.classList.remove('active'));
+
+            // Show selected detail section
+            document.getElementById('detail-' + section).classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function showOverview() {
+            // Show intro and nav
+            document.getElementById('intro-section').classList.remove('hidden');
+            document.getElementById('nav-grid').classList.remove('hidden');
+
+            // Hide all detail sections
+            const detailSections = document.querySelectorAll('.detail-section');
+            detailSections.forEach(section => section.classList.remove('active'));
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
+
